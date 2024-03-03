@@ -12,3 +12,7 @@ modern.jsonp
 resources/sass/.sass-cache/
 resources/.arch-internal-preview.css
 .arch-internal-preview.css
+
+# 目錄變色檔案與設定檔
+/desktop.ini
+/folderico-azure.ico
