@@ -55,3 +55,11 @@ twse-scraper.service.ts 會有兩個
 目前可以正常執行  
 移除 `twse-scraper.service.ts` 則會編譯錯誤  
 
+## 修正 eslint 錯誤
+```
+Delete `␍` eslint(prettier/prettier) [第 1 行,第 36 欄]
+```
+修正指令為:
+```
+npm run lint --fix
+```

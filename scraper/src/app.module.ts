@@ -5,6 +5,6 @@ import { TwseScraperService } from './twse-scraper.service';
 
 @Module({
   imports: [ScraperModule],
-  providers: [TwseScraperService]
+  providers: [TwseScraperService],
 })
 export class AppModule {}
