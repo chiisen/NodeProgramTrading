@@ -1,77 +1,78 @@
-# NodeProgramTrading
-Node.js 程式交易
+# 🚀 NodeProgramTrading
+運用 Node.js 打造你的專屬程式交易系統 📈
 
-# 安裝
-- [Node.js® Downloads](https://nodejs.org/en/download/current)
+## 🛠️ 環境安裝
+在開始之前，請確保已安裝以下必要工具：
 
-- [MongoDB Community Server Download](https://www.mongodb.com/try/download/community-kubernetes-operator)
+- **Node.js**: [前往官網下載最新版本](https://nodejs.org/en/download/current) 💻
+- **MongoDB Community Server**: [資料庫下載連結](https://www.mongodb.com/try/download/community-kubernetes-operator) 🍃
+- **NestJS CLI**: 
+  ```shell
+  npm install -g @nestjs/cli
+  
+  # 確認安裝成功
+  nest -h
+  ```
 
-- nest
+---
+
+## 📊 取得上市/上櫃股票清單
+透過 NestJS 建立爬蟲模組來獲取市場資訊。
+
+### 1️⃣ 建立 Scraper 專案與初始化
 ```shell
-npm install -g @nestjs/cli
-
-nest -h
-```
-# 取得上市或上櫃的股票清單
-## 建立 scraper 專案目錄與執行
-```shell
-# Nest CLI 建立 scraper 的 Nest 應用程式
+# 使用 Nest CLI 建立名為 scraper 的應用程式
 nest new scraper
 
-# 建立 ScraperModule
+# 建立專案專屬的 ScraperModule
 nest g module scraper
 
-# 進入目錄並執行
+# 進入目錄並啟動伺服器
 cd scraper
 npm run start
 ```
 
-## 必要安裝
-```
+### 2️⃣ 安裝必要相依套件
+```shell
 npm install --save @nestjs/axios cheerio iconv-lite
 ```
-- `@nestjs/axios`
-處理 HTTP 請求與回應
-- `cheerio`
-分析 HTML 資料與操作
-- `iconv-lite`
-將字串轉換不同編碼格式
+- **`@nestjs/axios`**: 負責處理非同步 HTTP 請求與回應 🌐
+- **`cheerio`**: 如同 jQuery 般便利地分析與操作 HTML 資料 📑
+- **`iconv-lite`**: 解決編碼問題，將字串轉換為正確格式 🔤
 
-# 執行 service
-- 新增 twse-scraper 的 service
-```
+---
+
+## ⚙️ 執行 Service 開發
+
+### 新增 TWSE 爬蟲服務
+```shell
 nest g service twse-scraper --flat --no-spec
 ```
-- `--flat`
-確保 Service 與 Module 在同一目錄
-- `--no-spec`
-省略單元測試的建立
-## 已知問題
-twse-scraper.service.ts 會有兩個  
-子目錄 `scraper` 目錄內的 `twse-scraper.service.ts`  
-是我們實作的內容  
-工作目錄上的 `twse-scraper.service.ts`  
-是 NEST-CLI 產生的  
-目前可以正常執行  
-移除 `twse-scraper.service.ts` 則會編譯錯誤  
+- `--flat`: 將 Service 直接產生在 Module 同一目錄下，保持結構簡潔。
+- `--no-spec`: 省略產生單元測試檔案，專注於功能開發。
 
-## 修正 eslint 錯誤
-```
-Delete `␍` eslint(prettier/prettier) [第 1 行,第 36 欄]
-```
-修正指令為:
-```
+### ⚠️ 已知問題
+在開發過程中，可能會遇到 `twse-scraper.service.ts` 重複出現的情況：
+1. `scraper` 子目錄內的檔案是我們主要實作內容。
+2. 根目錄或工作目錄上的檔案是由 NEST-CLI 自動產生的。
+
+**注意**：目前系統可正常運作，但若手動移除該檔案可能會導致編譯錯誤。
+
+---
+
+## 🧹 修正 ESLint / Prettier 錯誤
+若遇到 `Delete ␍ eslint(prettier/prettier)` 換行符號報錯：
+
+**解決方法 A：使用自動修復指令**
+```shell
 npm run lint --fix
 ```
-或是在 `.eslintrc.js` 檔案新增參數 `'linebreak-style': 'off'`
-與 `.prettierrc` 檔案新增參數 `"endOfLine": "auto"`
 
-## git commit message
-- 常用描述
-```
-✨ feat: 需求功能描述
-🐛 fix: 修正 bug 的問題描述
-💄 optimize: 最佳化程式碼或功能流程
-🔧 chore: 雜事，例如: 調整設定檔案等等 
-```
+**解決方法 B：修改設定檔（推薦）**
+- 在 `.eslintrc.js` 加入: `'linebreak-style': 'off'`
+- 在 `.prettierrc` 加入: `"endOfLine": "auto"`
+
+---
+
+*Happy Trading! 🚀🌕*
 
